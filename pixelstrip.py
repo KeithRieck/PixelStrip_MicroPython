@@ -11,7 +11,7 @@ def current_time():
     """
     Returns the current time in seconds.
     """
-    return time.monotonic()
+    return time.ticks_ms() / 1000.0
 
 
 class PixelStrip(neopixel.NeoPixel):
