@@ -11,4 +11,4 @@ Note that the included `npxl.py` module is a rough clone of AdaFruit's [Neopixel
 
 ## TODO
 * Get I2C to work on the Rpi Pico as an I2C slave, so an external master device can control the animations.
-
+* Get pixel_order to work with RGBW pixel strips.
