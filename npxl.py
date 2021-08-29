@@ -17,9 +17,11 @@ def __pio_for_ws2812():
     nop()                   .side(0)    [T2 - 1]
     wrap()
 
+__sm_num__ = 0
 
 class NeoPixel:
     def __init__(self, pin_num, num_pixels, bpp=3, brightness=1.0, auto_write=True, pixel_order=None):
+        global __sm_num__
         self.pin = Pin(pin_num)
         self._pin_num = pin_num
         self._num_pixels = num_pixels
@@ -28,13 +30,13 @@ class NeoPixel:
         self.auto_write = auto_write
         self._pixel_order = pixel_order
         self._ar = array.array("I", [0 for _ in range(num_pixels)])
-        self._sm = rp2.StateMachine(0, __pio_for_ws2812, freq=8_000_000, sideset_base=self.pin)
+        self._sm = rp2.StateMachine(__sm_num__, __pio_for_ws2812, freq=8_000_000, sideset_base=self.pin)
+        __sm_num__ = (__sm_num__ + 1) % 8 # don't use more than 8 state machines
         self._sm.active(1)
     
     def deinit(self):
         self.fill((0, 0, 0, 0))
         self.show()
-        # self.pin.deinit()
 
     def __enter__(self):
         return self
@@ -94,9 +96,3 @@ class NeoPixel:
         if self.auto_write:
             self.show()
 
-# TODO:
-# how to use libraries and multiple files on RPi?
-# Add and test PixelStrip module
-#
-# I2C as a peripheral device
-# Test with two strips
