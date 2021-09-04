@@ -1,7 +1,6 @@
 from machine import mem32
 
-
-class i2c_slave:
+class i2cSlave:
     I2C0_BASE = 0x40044000
     I2C1_BASE = 0x40048000
     IO_BANK0_BASE = 0x40014000
@@ -33,11 +32,11 @@ class i2c_slave:
     def _clr_reg(self, reg, data):
         self._write_reg(reg, data, method=self.mem_clr)
                 
-    def __init__(self, i2cID = 0, sda=0,  scl=1, slaveAddress=0x41):
+    def __init__(self, i2c_ID = 0, sda=0,  scl=1, slave_address=0x41):
         self.scl = scl
         self.sda = sda
-        self.slaveAddress = slaveAddress
-        self.i2c_ID = i2cID
+        self.slaveAddress = slave_address
+        self.i2c_ID = i2c_ID
         if self.i2c_ID == 0:
             self.i2c_base = self.I2C0_BASE
         else:
@@ -61,7 +60,7 @@ class i2c_slave:
         # 4 enable i2c 
         self._set_reg(self.IC_ENABLE, 1)
 
-    def anyRead(self):
+    def any_read(self):
         status = mem32[ self.i2c_base | self.IC_RAW_INTR_STAT] & 0x20
         if status :
             return True
@@ -77,7 +76,7 @@ class i2c_slave:
         # get IC_STATUS
         status = mem32[ self.i2c_base | self.IC_STATUS]
         # check RFNE receive fifio not empty
-        if (status &  8) :
+        if status &  8 :
             return True
         return False
     
