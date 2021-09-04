@@ -24,7 +24,7 @@ strip = [
 led = Pin(25, Pin.OUT)
 led.value(False)
 
-i2c_slave = i2cSlave(0,sda=8,scl=9,slave_address=I2C_ADDRESS)
+i2c_slave = i2cSlave(0,sda=16,scl=17,slave_address=I2C_ADDRESS)
 
 def receive_message():
     global i2c_slave
