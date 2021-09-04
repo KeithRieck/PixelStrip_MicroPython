@@ -22,6 +22,7 @@ strip = [
 
 # The built-in LED will turn on for half a second after every message
 led = Pin(25, Pin.OUT)
+led.value(False)
 
 i2c_slave = i2cSlave(0,sda=8,scl=9,slave_address=I2C_ADDRESS)
 
@@ -36,7 +37,7 @@ def receive_message():
         return None
 
 def main():
-    global strip
+    global strip, led
     for s in strip:
         s.clear()
     last_msg_time = 0.0
@@ -49,7 +50,6 @@ def main():
             anim_num = message[1]
             strip[strip_num].animation = animation[anim_num]
             last_msg_time = current_time()
-        led = current_time() < last_msg_time + 0.5
-
+        led.value(current_time() < last_msg_time + 0.5)
 
 main()
