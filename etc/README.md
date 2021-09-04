@@ -19,15 +19,17 @@ For the Pico program, five files should be installed onto the Pico.  First copy 
 * `animation_pulse.py`
 
 There are many ways to load the Pico program.  You can use [Thonny](https://thonny.org/):
+
 ![Files using Thonny](files_thonny.png)
 
 You can also use Visual Studio Code with the [Pico-Go](http://pico-go.net/) extension:
+
 ![Files using Pico-Go](files_pico_go.png)
 
 ## Hardware setup
 
-Connect the Arduino's SDA and SCL pins to corresponding pins on the Pico. Also connect ground wires between the two boards.
+Connect the Arduino's SDA and SCL pins to corresponding pins on the Pico.  For this example, we are configuring the Pico's GP16 and GP17 pins for I2C. Also connect ground wires between the two boards.
 
-Wire the two NeoPixel strips to ground, power, and two data pins.
+Wire the two NeoPixel strips to ground, power, and two data pins.  In this example, we are using the Pico's GP4 and GP5 pins for pixel data.
 
 ![Breadboard setup](i2c_tester.png)
