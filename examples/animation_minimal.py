@@ -23,11 +23,11 @@ class MyAnimation(pixelstrip.Animation):
         strip.show()
 
 
-def main():
-    strip = pixelstrip.PixelStrip(22, 8)
-    strip.animation = MyAnimation()
-    while True:
-        strip.draw()
-        time.sleep(0.02)
+# def main():
+#     strip = pixelstrip.PixelStrip(22, 8)
+#     strip.animation = MyAnimation()
+#     while True:
+#         strip.draw()
+#         time.sleep(0.02)
 
-main()
+# main()

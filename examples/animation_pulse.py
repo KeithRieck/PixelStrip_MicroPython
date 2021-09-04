@@ -41,11 +41,11 @@ class PulseAnimation(pixelstrip.Animation):
             floor(color[3] * brightness),
         )
 
-def main():
-    strip = pixelstrip.PixelStrip(22, 8, bpp=4, pixel_order=pixelstrip.RGBW)
-    strip.animation = PulseAnimation()
-    while True:
-        strip.draw()
-        time.sleep(0.02)
+# def main():
+#     strip = pixelstrip.PixelStrip(22, 8, bpp=4, pixel_order=pixelstrip.RGBW)
+#     strip.animation = PulseAnimation()
+#     while True:
+#         strip.draw()
+#         time.sleep(0.02)
 
-main()
+# main()
