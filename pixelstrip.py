@@ -6,7 +6,6 @@ GRB = "GRB"
 RGBW = "RGBW"
 GRBW = "GRBW"
 
-
 def current_time():
     """
     Returns the current time in seconds.
@@ -99,7 +98,6 @@ class Animation:
     """
     Base class for all animations.
     """
-
     def __init__(self):
         self._timeout = None
 
