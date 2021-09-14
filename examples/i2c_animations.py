@@ -1,4 +1,3 @@
-import time
 from machine import Pin
 from i2cp import i2cSlave
 from pixelstrip import PixelStrip, current_time

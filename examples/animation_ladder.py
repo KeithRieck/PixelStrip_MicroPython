@@ -1,4 +1,4 @@
-import time
+import utime
 import pixelstrip
 
 class LadderAnimation(pixelstrip.Animation):
@@ -27,10 +27,10 @@ class LadderAnimation(pixelstrip.Animation):
 
 
 # def main():
-#     strip = pixelstrip.PixelStrip(5, 8)
+#     strip = pixelstrip.PixelStrip(4, 8)
 #     strip.animation = LadderAnimation()
 #     while True:
 #         strip.draw()
-#         time.sleep(0.02)
+#         utime.sleep(0.02)
 #
 # main()

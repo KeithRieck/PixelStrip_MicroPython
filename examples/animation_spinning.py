@@ -1,12 +1,12 @@
-import time
+import utime
 import pixelstrip
 
 class SpinningAnimation(pixelstrip.Animation):
     """
     One colored pixel travels across the strip.
     """
-    def __init__(self, color, cycle_time=1.0):
-        pixelstrip.Animation.__init__(self)
+    def __init__(self, color, cycle_time=1.0, name=None):
+        pixelstrip.Animation.__init__(self, name)
         self.color = color
         self.current_pixel = 0
         self.cycle_time = cycle_time
@@ -27,10 +27,10 @@ class SpinningAnimation(pixelstrip.Animation):
 
 
 # def main():
-#     strip = pixelstrip.PixelStrip(5, 8, bpp=4, pixel_order=pixelstrip.RGBW)
+#     strip = pixelstrip.PixelStrip(4, 8, bpp=4, pixel_order=pixelstrip.RGBW)
 #     strip.animation = SpinningAnimation((128, 64, 0, 0))
 #     while True:
 #         strip.draw()
-#         time.sleep(0.02)
-
+#         utime.sleep(0.02)
+#
 # main()

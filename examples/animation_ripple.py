@@ -1,4 +1,4 @@
-import time
+import utime
 import pixelstrip
 from math import sin, floor, ceil
 
@@ -13,8 +13,9 @@ class RippleAnimation(pixelstrip.Animation):
         curve_list=[(0.125, 1.0, 1.0), (0.156, 0.8, 0.9), (0.100, 1.1, 1.1)],
         cycle_time=40.0,
         x_span=100,
+        name=None
     ):
-        pixelstrip.Animation.__init__(self)
+        pixelstrip.Animation.__init__(self, name)
         self.color_list = color_list
         self.cycle_time = cycle_time
         self.x_span = x_span
@@ -59,10 +60,10 @@ class RippleAnimation(pixelstrip.Animation):
 
 
 # def main():
-#     strip = pixelstrip.PixelStrip(5, 8)
+#     strip = pixelstrip.PixelStrip(4, 8)
 #     strip.animation = RippleAnimation(x_span=8)
 #     while True:
 #         strip.draw()
-#         time.sleep(0.02)
-
+#         utime.sleep(0.02)
+#
 # main()

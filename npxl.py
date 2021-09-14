@@ -1,5 +1,5 @@
 import array
-import time
+import utime
 from machine import Pin
 import rp2
 
@@ -70,7 +70,7 @@ class NeoPixel:
             b = int((c & 0xFF) * self._brightness)
             dimmer_ar[i] = (g<<16) + (r<<8) + b
         self._sm.put(dimmer_ar, 8)
-        time.sleep_ms(10)
+        utime.sleep_ms(10)
     
     def fill(self, color):
         for index in range(self._num_pixels):

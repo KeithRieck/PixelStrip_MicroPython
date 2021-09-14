@@ -1,4 +1,4 @@
-import time
+import utime
 import pixelstrip
 
 # This is a a minimal example of an Animation.
@@ -24,10 +24,10 @@ class MyAnimation(pixelstrip.Animation):
 
 
 # def main():
-#     strip = pixelstrip.PixelStrip(22, 8)
+#     strip = pixelstrip.PixelStrip(4, 8)
 #     strip.animation = MyAnimation()
 #     while True:
 #         strip.draw()
-#         time.sleep(0.02)
-
+#         utime.sleep_ms(2)
+#
 # main()

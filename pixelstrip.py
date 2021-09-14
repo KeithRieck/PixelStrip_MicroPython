@@ -1,4 +1,4 @@
-import time
+import utime
 import npxl as neopixel
 
 RGB = "RGB"
@@ -10,7 +10,7 @@ def current_time():
     """
     Returns the current time in seconds.
     """
-    return time.ticks_ms() / 1000.0
+    return utime.ticks_ms() / 1000.0
 
 
 class PixelStrip(neopixel.NeoPixel):
@@ -98,8 +98,18 @@ class Animation:
     """
     Base class for all animations.
     """
-    def __init__(self):
+    def __init__(self, name=None):
         self._timeout = None
+        self._name = name
+
+    def __repr__(self):
+        t = self.__class__.__name__
+        n = "" if self._name is None else self._name
+        return "{}({})".format(t, n)
+
+    def __str__(self):
+        t = self.__class__.__name__
+        return t if self._name is None else self._name
 
     def reset(self, strip):
         """

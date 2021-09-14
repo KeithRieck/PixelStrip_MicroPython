@@ -38,16 +38,16 @@ Wire up your Neopixels (WS2812B LEDs) to power, ground, and digital input. In th
 Copy the `npxl.py` and `pixelstrip.py` files into your project, and then create the following in a file named `main.py`:
 
 ```python
-import time
+import utime
 from pixelstrip import PixelStrip
 
 strip = PixelStrip(4, 8, auto_write=True)
 
 while True:
     strip[0] = (128, 0, 0, 0)
-    time.sleep(0.5)
+    utime.sleep(0.5)
     strip[0] = (0, 0, 0, 0)
-    time.sleep(0.5)
+    utime.sleep(0.5)
 ```
 
 In code, we create a PixelStrip object and assign colors to specific LEDs. Colors are coded as tuples of four integers, each between 0 and 255.
@@ -59,7 +59,7 @@ Animations on a strip can be changed at any time.
 New animations should extend `pixelstrip.Animation` and must at least define a new `draw()` function.
 
 ```python
-import time
+import utime
 from pixelstrip import PixelStrip, Animation
 
 # Define a new Animation
@@ -91,7 +91,7 @@ strip.animation = BlinkAnimation()
 # Repeatedly draw the strip, causing the Animation to run
 while True:
     strip.draw()
-    time.sleep(0.010)
+    utime.sleep(0.010)
 ```
 
 
