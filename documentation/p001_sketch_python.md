@@ -1,7 +1,6 @@
-<style type="text/css">
-    h1 {color:red;}
-    p {color:blue;}
-</style>
+@settings {
+  font-size: 100;
+}
 
 # Sketch graphical programs in Python
 
