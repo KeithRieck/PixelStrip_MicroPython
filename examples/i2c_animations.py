@@ -1,3 +1,4 @@
+import time
 from machine import Pin
 from i2cp import i2cSlave
 from pixelstrip import PixelStrip, current_time
@@ -9,23 +10,28 @@ BRIGHTNESS = 0.5
 # List of Animations
 animation = [
     PulseAnimation(),
-    PulseAnimation([(0, 136, 0, 0), (64, 64, 0, 0)]),
-    PulseAnimation([(0, 0, 136, 0), (0, 64, 64, 0)]),
+    PulseAnimation([(0, 136, 0), (64, 64, 0)]),
+    PulseAnimation([(0, 0, 136), (0, 64, 64)]),
 ]
 
 # List of PixelStrips
 strip = [
-    PixelStrip(4, 8, brightness=BRIGHTNESS),
-    PixelStrip(5, 8, brightness=BRIGHTNESS)
+    PixelStrip(4, 12, brightness=BRIGHTNESS),
+    PixelStrip(5, 8, brightness=BRIGHTNESS),
+    PixelStrip(8, 12, brightness=BRIGHTNESS),
+    PixelStrip(9, 12, brightness=BRIGHTNESS)
 ]
 
 # The built-in LED will turn on for half a second after every message
 led = Pin(25, Pin.OUT)
 led.value(False)
 
-i2c_slave = i2cSlave(0,sda=16,scl=17,slave_address=I2C_ADDRESS)
+i2c_slave = i2cSlave(1,sda=6,scl=7,slave_address=I2C_ADDRESS)
 
 def receive_message():
+    """
+    Receive one byte on I2C bus.  Translate to strip and animation number.
+    """
     global i2c_slave
     if i2c_slave.any():
         b = i2c_slave.get()
@@ -35,10 +41,38 @@ def receive_message():
     else:
         return None
 
+def set_animation(strip_num, anim_num):
+    """
+    Set the animation on one PixelStrip to be one Animation.
+    If anim_num is too large, stop animation and clear strip.
+    """
+    if anim_num < len(animation):
+        strip[strip_num].animation = animation[anim_num]
+    else:
+        strip[strip_num].animation = None
+
+def blink(i):
+    """
+    Blink onboard LED and also each PixelStrip.
+    This demonstrates that the program is active and all strips are connected.
+    """
+    for _ in range(i):
+        led.toggle()
+        for s in strip:
+            s[0] = (128, 0, 0, 0)
+            s.show()
+        time.sleep(0.2)
+        led.toggle()
+        for s in strip:
+            s.clear()
+            s.show()
+        time.sleep(0.2)
+
 def main():
     global strip, led
     for s in strip:
-        s.clear()
+        s.reset()
+    blink(3)
     last_msg_time = 0.0
     while True:
         for s in strip:
@@ -47,8 +81,12 @@ def main():
         if message:
             strip_num = message[0]
             anim_num = message[1]
-            strip[strip_num].animation = animation[anim_num]
+            set_animation(strip_num, anim_num)
             last_msg_time = current_time()
         led.value(current_time() < last_msg_time + 0.5)
 
 main()
+
+
+
+
