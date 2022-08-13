@@ -1,3 +1,8 @@
+<style type="text/css">
+    h1 {color:red;}
+    p {color:blue;}
+</style>
+
 # Sketch graphical programs in Python
 
 [Processing](https://processing.org/) is a graphics library created at MIT to promote programming literacy in the visual arts.  Graphical “sketches” have been written for data analysis, games, or artwork.  Processing provides an easy introduction to programming.  The structure of the sketches themselves is somewhat similar to our robot programs.  Note that there is both a Java and a Python option.
