@@ -8,7 +8,9 @@ You will need a Pico, a micro USB cable, and a laptop. Install the [Thonny](http
 
 To set up your Pico, you'll need to get the UFC file containing the latest version of MicroPython.  Connect the micro USB cable to you Pico. Hold down the BOOTSEL button on the Pico before connecting the cable to your laptop.  A new drive should appear on the laptop.  Drag the UFC file onto the new drive.  After the file has loaded, unplug the cable from your laptop and then replug it.
 
-Start up the Thonny application.  On the lower-right corner of the Thonny is a menu specifying which Python interpretter is running.  Click on this menu and select MicroPython.  In the main window, type the following, and then save it into the Pico with the file name `main.py`
+Start up the Thonny application.  On the lower-right corner of the Thonny is a menu specifying which Python interpretter is running.  Click on this menu and select MicroPython.  After this, any code run in the Shell window will be executed on the Pico, rather than within your laptop.
+
+In the main window, type the following:
 
 ```python
 from machine import Pin
@@ -21,6 +23,7 @@ while True:
     sleep(2.0)
 ```
 
+Save this program onto your Raspberry Pi Pico with the file name `main.py`, and then click the little green "Run" icon.  A small LED on the Pico should start blinking.  You can start and stop the program.  Modify the program to blink at different rates.
 ---
 
 ## Other Things to Try:
