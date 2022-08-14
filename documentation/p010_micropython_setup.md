@@ -24,6 +24,7 @@ while True:
 ```
 
 Save this program onto your Raspberry Pi Pico with the file name `main.py`, and then click the little green "Run" icon.  A small LED on the Pico should start blinking.  You can start and stop the program.  Modify the program to blink at different rates.
+
 ---
 
 ## Other Things to Try:
