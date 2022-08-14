@@ -44,10 +44,12 @@ while True:
     sleep(2.0)
 ```
 
+After you have this working, try adding a second or a third LED
+
 ---
 
 ## Other Things to Try:
-* 
+* Add switches for digital inputs.
 
 ## References:
 * MicroPython on the Pico:  https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
@@ -57,4 +59,4 @@ while True:
 * Raspberry Pi Pico Pinout diagram:  https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf 
 
 ## Pinouts:
-![Pinouts](.img/rpi_pico_pinouts.jpg)
+![Pinouts](./img/rpi_pico_pinouts.jpg)
