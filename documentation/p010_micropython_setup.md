@@ -10,8 +10,7 @@ To set up your Pico, you'll need to get the UFC file containing the latest versi
 
 Start up the Thonny application.  On the lower-right corner of the Thonny is a menu specifying which Python interpretter is running.  Click on this menu and select MicroPython.  After this, any code run in the Shell window will be executed on the Pico, rather than within your laptop.
 
-
-
+## Blink Code
 
 In the main window, type the following:
 
@@ -31,6 +30,8 @@ while True:
 Save this program onto your Raspberry Pi Pico with the file name `main.py`, and then click the little green "Run" icon.  A small LED on the Pico should start blinking.  You can start and stop the program.  Modify the program to blink at different rates.
 
 ![led_setup](./img/led_setup_50.png)
+
+## External LED
 
 Now try setting up this circuit on your breadboard.  The resistor can be any size, and should be connected to GPIO pin 16.  Note that the LED has a long wire and a short wire; the short wire should connect to the blue ground rail and the long wire should be connected near the resistor. After you have this working, try adding a second or a third LED
 
