@@ -10,6 +10,9 @@ To set up your Pico, you'll need to get the UFC file containing the latest versi
 
 Start up the Thonny application.  On the lower-right corner of the Thonny is a menu specifying which Python interpretter is running.  Click on this menu and select MicroPython.  After this, any code run in the Shell window will be executed on the Pico, rather than within your laptop.
 
+
+
+
 In the main window, type the following:
 
 ```python
@@ -34,9 +37,7 @@ Now try setting up this circuit on your breadboard.  The resistor can be any siz
 ```python
 from machine import Pin
 from utime import sleep
-
 pin_16 = Pin(16, Pin.OUT)
-
 while True:
     pin_16.toggle()
     sleep(1.0)
