@@ -15,7 +15,9 @@ In the main window, type the following:
 ```python
 from machine import Pin
 from utime import sleep
+
 led = Pin('LED', Pin.OUT)
+
 while True:
     led.on()
     sleep(0.5)
@@ -25,13 +27,34 @@ while True:
 
 Save this program onto your Raspberry Pi Pico with the file name `main.py`, and then click the little green "Run" icon.  A small LED on the Pico should start blinking.  You can start and stop the program.  Modify the program to blink at different rates.
 
+![led_setup](./img/led_setup.png)
+
+Now try setting up this circuit on your breadboard.  The resistor can be any size, and should be connected to GPIO pin 16.  Note that the LED has a long wire and a short wire; the short wire should connect to the blue ground rail and the long wire should be connected near the resistor.
+
+```python
+from machine import Pin
+from utime import sleep
+
+pin_16 = Pin(16, Pin.OUT)
+
+while True:
+    pin_16.on()
+    sleep(1.0)
+    pin_16.off()
+    sleep(2.0)
+```
+
 ---
 
 ## Other Things to Try:
-*
+* 
 
 ## References:
 * MicroPython on the Pico:  https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
 * Latest MicroPyton UFC for the [Pico](https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf): https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2
 * Latest MicroPyton UFC for the [Pico W](https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf): https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2
 * UFC to reset everything: https://cdn-learn.adafruit.com/assets/assets/000/099/419/original/flash_nuke.uf2
+* Raspberry Pi Pico Pinout diagram:  https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf 
+
+## Pinouts:
+![Pinouts](.img/rpi_pico_pinouts.jpg)
