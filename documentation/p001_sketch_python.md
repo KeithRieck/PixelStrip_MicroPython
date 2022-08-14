@@ -1,8 +1,6 @@
 
 # Sketch graphical programs in Python
 
-    <style type="text/css"> h1 {color:red;} p {color:blue;} </style>
-
 [Processing](https://processing.org/) is a graphics library created at MIT to promote programming literacy in the visual arts.  Graphical “sketches” have been written for data analysis, games, or artwork.  Processing provides an easy introduction to programming.  The structure of the sketches themselves is somewhat similar to our robot programs.  Note that there is both a Java and a Python option.
 
 We’ll be using Processing version 4.  Start the Processing application up and it will display a text editor with an empty sketch.  Make sure the menu on the upper right says “Python” rather than "Java".  If the Python mode is not available, you may need to install it with the "Manage Modes" option.
@@ -63,11 +61,14 @@ Note that the `x` and `y` variables are no longer inside the `draw` method.  The
 
 ---
 
-## Other Things to Try
+## Other Things to Try:
 * Draw a picture.  E.g. a face, a car, a spaceship, a robot, a tree.
 * Try integrating one of Processing’s dynamic variables: mouseX, key, mouseButton
 * Make multiple moving ellipses, or rectangles, or whole pictures.
 * Try some of the Example sketches listed under the File menu.
 
-
+## References:
+* Processing: https://processing.org/
+* Python Tutorial:  https://docs.python.org/3/tutorial/
+* Processing Tutorial:  https://www.youtube.com/watch?v=5N31KNgOO0g
 

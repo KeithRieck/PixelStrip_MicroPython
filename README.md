@@ -16,15 +16,15 @@ The Pico board has a tiny LED near the USB plug, which we can cause to blink.  S
 
 ```python
 from machine import Pin
-import utime
+from utime import sleep
 
-led = Pin(25, Pin.OUT)
+led = Pin('LED', Pin.OUT)
 
 while True:
-    led.value(1)
-    utime.sleep(0.5)
-    led.value(0)
-    utime.sleep(2.0)
+    led.on()
+    sleep(0.5)
+    led.off()
+    sleep(2.0)
 ```
 
 This blink program is very useful because it verifies that the basic hardware and software is working.  If you ever reach a point there the board isn't doing anything, you can always load in the blink program to verify that your hardware is wired and powered, that your IDE is working and files are being delivered through USB.
