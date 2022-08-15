@@ -1,3 +1,8 @@
+base:
+  font-color: #333333
+  font-family: Times-Roman
+  font-size: 12
+
 == Sketch graphical programs in Python
 
 https://processing.org/[Processing] is a graphics library created at MIT
@@ -13,7 +18,7 @@ menu on the upper right says ``Python'' rather than ``Java''. If the
 Python mode is not available, you may need to install it with the
 ``Manage Modes'' option.
 
-[.image]#Processing#
+image::./img/processing_python.jpg[Processing]
 
 A sketch should have at least the two basic methods: `setup` and `draw`.
 The `setup` method will be called once when the sketch first starts.
