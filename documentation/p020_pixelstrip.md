@@ -21,3 +21,7 @@ while True:
     sleep(0.5)
 ```
 
+## Example with a loop
+
+## Example with a timeout
+
