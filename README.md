@@ -2,7 +2,7 @@
 
 PixelStrip is a [MicroPython](https://micropython.org/) module for controlling WS2812 RGB LEDs on the [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/).  These LEDs are also known as  [NeoPixels](https://learn.adafruit.com/adafruit-neopixel-uberguide). The PixelStrip library allows you to add Animations to the strip.  Multiple strips can have separate animations that run in parallel.
 
-Note that the included `npxl.py` module is a rough clone of AdaFruit's [Neopixel library](https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel) for [CircuitPython](https://learn.adafruit.com/welcome-to-circuitpython). 
+Note that the included `npxl.py` module is a rough clone of AdaFruit's [Neopixel library](https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel) for [CircuitPython](https://learn.adafruit.com/welcome-to-circuitpython).    
 
 ## Installation
 
@@ -38,16 +38,16 @@ Wire up your Neopixels (WS2812B LEDs) to power, ground, and digital input. In th
 Copy the `npxl.py` and `pixelstrip.py` files into your project, and then create the following in a file named `main.py`:
 
 ```python
-import utime
+from utime import sleep
 from pixelstrip import PixelStrip
 
 strip = PixelStrip(4, 8, auto_write=True)
 
-while True:
-    strip[0] = (128, 0, 0, 0)
-    utime.sleep(0.5)
-    strip[0] = (0, 0, 0, 0)
-    utime.sleep(0.5)
+while True: 
+    strip[0] = (128, 0, 0)
+    sleep(0.5)
+    strip[0] = (0, 0, 0)
+    sleep(0.5)
 ```
 
 In code, we create a PixelStrip object and assign colors to specific LEDs. Colors are coded as tuples of four integers, each between 0 and 255.
@@ -59,7 +59,7 @@ Animations on a strip can be changed at any time.
 New animations should extend `pixelstrip.Animation` and must at least define a new `draw()` function.
 
 ```python
-import utime
+from utime import sleep
 from pixelstrip import PixelStrip, Animation
 
 # Define a new Animation
@@ -83,7 +83,7 @@ class BlinkAnimation(Animation):
             strip.show()
 
 # Create a PixelStrip object connected to digital IO pin GP4
-strip = PixelStrip(4, 8, auto_write=True)
+strip = PixelStrip(4, 8)
 
 # Assign an instance of the new Animation into the strip
 strip.animation = BlinkAnimation()
@@ -91,7 +91,7 @@ strip.animation = BlinkAnimation()
 # Repeatedly draw the strip, causing the Animation to run
 while True:
     strip.draw()
-    utime.sleep(0.010)
+    sleep(0.010)
 ```
 
 ## Matrix Example

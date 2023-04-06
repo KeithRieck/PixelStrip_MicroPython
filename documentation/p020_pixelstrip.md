@@ -6,22 +6,64 @@ Wire up your Neopixels (WS2812B LEDs) to power, ground, and digital input. In th
 
 ![pixelstrip_setup](./img/pixelstrip_setup_50.jpg)
 
-Copy the `npxl.py`, `pixelstrip.py`, and `colors.py` files into your Pico, and then create the following in a file named `main.py`:
+Copy the `npxl.py`, `pixelstrip.py`, and `colors.py` files into your Pico.  Then create the following in a file named `main.py`:
+
+```python
+from utime import sleep
+from pixelstrip import PixelStrip
+from colors import *
+
+strip = PixelStrip(4, 8)
+
+while True:
+    strip[0] = (0, 64, 64)
+    strip.show()
+    sleep(0.5)
+    strip[0] = (0, 0, 0)
+    strip.show()
+    sleep(1.5)
+```
+
+Note that colors are denoted with tuples of red, green, and blue values.  Each color component value is a number from 0 through 255.  You can also use predefined colors from the `colors.py` file.
+
+Here's a program that uses a loop to set multiple pixels:
 
 ```python
 from utime import sleep
 from pixelstrip import PixelStrip
 
-strip = PixelStrip(4, 8, auto_write=True)
+strip = PixelStrip(4, 8)
 
 while True:
-    strip[0] = (128, 0, 0, 0)
-    sleep(0.5)
-    strip[0] = (0, 0, 0, 0)
+    r = 128
+    g = 0
+    for p in range(len(strip)):
+        strip[p] = (r, g, 0)
+        r = r - 12
+        g = g + 12
+    strip.show()
+    
+    sleep(1.5)
+    strip.clear()
+    strip.show()
     sleep(0.5)
 ```
 
-## Example with a loop
+Here is a program that uses a 'timeout' on the PixelStrip.
 
-## Example with a timeout
+```python
+from pixelstrip import PixelStrip
+from random import randint
 
+strip = PixelStrip(4, 8)
+strip.timeout = 1.0
+
+while True:
+    if strip.is_timed_out():
+        r = randint(0, 255)
+        g = randint(0, 255)
+        b = randint(0, 255)
+        strip[0] = (r, g, b)
+        strip.show()
+        strip.timeout = 1.0
+```
