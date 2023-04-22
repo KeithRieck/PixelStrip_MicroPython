@@ -5,7 +5,7 @@ from machine import mem32
 
 class I2cPerf:
     """
-    Simple I2C peripheral class for the Raspberry Pi Pico (RP2040).
+    Simple I2C peripheral class for the RP2040.
     An I2cPerf object passively waits for messages from a Controller object.
     This class only sends and receives a single byte.
     """
